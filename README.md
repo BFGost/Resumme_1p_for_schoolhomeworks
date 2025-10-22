@@ -1,3 +1,4 @@
 ﻿# Resumme_1p_for_schoolhomeworks
 
-![alt text](image-url)
+![36194-01-800x600](image-url)
+
