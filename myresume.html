@@ -165,6 +165,20 @@
       background: var(--card-bg);
     }
 
+    .theme-toggle, .pdf-btn {
+      position: fixed;
+      top: 20px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      box-shadow: 0 4px 10px var(--shadow);
+    }
+
     /* 主題切換按鈕 */
     .theme-toggle {
       position: fixed;
@@ -201,8 +215,7 @@
 <body>
   <button class="theme-toggle" onclick="toggleTheme()">切換主題 🌙</button>
   <button class="pdf-btn" onclick="downloadPDF()">下載 PDF 📄</button>
-  
-  <div class="container">
+    <div class="container">
     <!-- 左邊個人資料 -->
     <div class="left">
       <div class="photo">
@@ -297,6 +310,7 @@
   </script>
 </body>
 </html>
+
 
 
 
