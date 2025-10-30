@@ -1,182 +1,178 @@
 <!DOCTYPE html>
-<html lang="zh-Hant"><head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Resume — 李 (學號 111051095)</title>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>我的履歷</title>
   <style>
-    :root{
-      --bg:#f6f8fb; --card:#ffffff; --muted:#6b7280; --accent:#3b82f6;
-      --maxw:900px;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Helvetica Neue", Arial;
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Noto Sans TC', sans-serif;
+      background-color: #f4f6f8;
+      color: #333;
+      overflow-x: hidden;
     }
-    *{box-sizing:border-box}
-    body{margin:0;background:linear-gradient(180deg,var(--bg),#eef3fb);color:#111;font-size:16px;line-height:1.45}
-    .container{max-width:var(--maxw);margin:28px auto;padding:20px}
-    .card{background:var(--card);border-radius:12px;box-shadow:0 6px 22px rgba(14,30,37,0.08);overflow:hidden;display:grid;grid-template-columns:280px 1fr}
-    .left{padding:28px;background:linear-gradient(180deg,#fbfdff, #f3f8ff)}
-    .right{padding:28px}
-    .avatar{width:96px;height:96px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#06b6d4);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:30px;margin-bottom:16px}
-    h1{margin:0;font-size:20px}
-    .meta{color:var(--muted);font-size:14px;margin-top:6px}
-    .section{margin-bottom:18px}
-    .section h3{margin:0 0 8px 0;font-size:14px}
-    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#eef6ff;color:var(--accent);font-size:13px;margin:4px 6px 0 0}
-    ul{padding-left:16px;margin:6px 0}
-    .skill-list{display:flex;flex-wrap:wrap}
-    .skill{background:#f3f6ff;border-radius:8px;padding:6px 8px;margin:6px 8px 0 0;font-size:13px;color:#0f172a}
-    .muted{color:var(--muted)}
-    .contact-item{font-size:14px;margin-bottom:8px}
-    .controls{display:flex;gap:10px;align-items:center}
-    button{cursor:pointer;border:0;border-radius:8px;padding:8px 12px;font-weight:600}
-    .btn-primary{background:var(--accent);color:white}
-    .btn-ghost{background:transparent;border:1px solid #e6eefc;color:var(--accent)}
-    .print-note{font-size:13px;color:var(--muted);margin-top:8px}
-    @media (max-width:880px){.card{grid-template-columns:1fr}.left{display:flex;gap:20px;align-items:center;padding:18px}.right{padding:18px}}
-    /* small resume table styles */
-    .row{display:flex;justify-content:space-between;gap:12px}
-    .row .col{flex:1}
-    .title{font-weight:700}
-    footer{font-size:13px;color:var(--muted);text-align:center;padding:14px}
+
+    /* 橫幅區 */
+    header {
+      position: relative;
+      background-image: url('36194-01-800x600.png');
+      background-size: cover;
+      background-position: center;
+      height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+      overflow: hidden;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.35);
+      z-index: 1;
+    }
+
+    header h1 {
+      position: relative;
+      z-index: 2;
+      font-size: 2.8em;
+      letter-spacing: 2px;
+      animation: fadeInDown 1.5s ease-out;
+    }
+
+    @keyframes fadeInDown {
+      0% { opacity: 0; transform: translateY(-30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* 主要內容 */
+    .container {
+      max-width: 900px;
+      background: #fff;
+      margin: -60px auto 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      padding: 40px 60px;
+      animation: fadeInUp 1.5s ease;
+    }
+
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(40px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+      color: #2c3e50;
+      border-left: 5px solid #3498db;
+      padding-left: 10px;
+      margin-top: 30px;
+    }
+
+    .info p {
+      margin: 5px 0;
+      font-size: 16px;
+    }
+
+    .highlight {
+      color: #3498db;
+      font-weight: bold;
+    }
+
+    ul {
+      list-style-type: "✦ ";
+      margin-left: 20px;
+      line-height: 1.8em;
+    }
+
+    button {
+      display: block;
+      margin: 30px auto 0;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      background-color: #3498db;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      color: #777;
+      font-size: 14px;
+      margin: 30px 0 10px;
+    }
+
+    /* 手機排版 */
+    @media (max-width: 600px) {
+      .container {
+        padding: 30px 25px;
+      }
+      header h1 {
+        font-size: 2em;
+      }
+    }
   </style>
 </head>
 <body>
+  <header>
+    <h1>王小明的履歷</h1>
+  </header>
+
   <div class="container">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
-      <div>
-        <strong>個人履歷表</strong> · Christina Lee
-      </div>
-      <div class="controls">
-        <button class="btn-primary" id="printBtn">列印 / 存為 PDF</button>
-        <button class="btn-ghost" id="toggleTheme">切換深色模式</button>
-      </div>
-    </div>
+    <section class="info">
+      <p><strong>姓名：</strong>王小明</p>
+      <p><strong>學號：</strong><span id="studentId" class="highlight">111051095</span></p>
+      <p><strong>Email：</strong>example@mail.com</p>
+      <p><strong>電話：</strong>0912-345-678</p>
+    </section>
 
-    <div class="card" id="resumeCard">
-      <aside class="left">
-        <div style="display:flex;flex-direction:column;align-items:flex-start">
-          <div class="avatar"><img src="36194-01-800x600.png" alt="個人照片" style="width:96px;height:96px;border-radius:12px;object-fit:cover;">
-          </div>
-          <h1>李詩蒻</h1>
-          <div class="meta">學號：111051095 · 亞洲大學 四年級</div>
-        </div>
+    <h2>學歷</h2>
+    <ul>
+      <li>國立XX大學 資訊工程學系（2021 - 至今）</li>
+      <li>XX高中（2018 - 2021）</li>
+    </ul>
 
-        <div class="section">
-          <h3>聯絡資訊</h3>
-          <div class="contact-item"><strong>Email:</strong> <span class="muted">my.email@example.com</span></div>
-          <div class="contact-item"><strong>電話:</strong> <span class="muted">(09) xxxx-xxxx</span></div>
-          <div class="contact-item"><strong>地點:</strong> <span class="muted">台中市, 台灣</span></div>
-        </div>
+    <h2>技能</h2>
+    <ul>
+      <li>前端開發：HTML、CSS、JavaScript</li>
+      <li>程式語言：Python、C++</li>
+      <li>UI/UX設計基礎、簡報製作</li>
+    </ul>
 
-        <div class="section">
-          <h3>技能</h3>
-          <div class="skill-list">
-            <span class="skill">Microsoft office MOS 技能檢定</span>
-            <span class="skill">Adobe Certified Associate Photoshop 2023 證照</span>
-          </div>
-        </div>
+    <h2>經歷</h2>
+    <ul>
+      <li>2023　校園專題製作小組成員（負責前端設計）</li>
+      <li>2022　系學會活動組志工</li>
+    </ul>
 
-        <div class="section">
-          <h3>語言</h3>
-          <div class="badge">中文 (母語-精通)</div>
-          <div class="badge">英文（基礎）</div>
-          <div class="badge">日文 (可對話)</div>
-        </div>
-
-        <div class="section">
-          <h3>興趣</h3>
-          <div class="muted">繪圖，藝術，音樂，羽毛球</div>
-        </div>
-
-      </aside>
-
-      <main class="right">
-        <section class="section">
-          <h3>個人簡介</h3>
-          <p class="muted">我是亞洲大學數位媒體學系四年級學生(學號：111051095)，目標為報考海外研究所；有經營個人繪圖帳號並接案，有實況及開台經驗，對Vtuber及相關行業感興趣，並想從事幕後工作。</p>
-        </section>
-
-        <section class="section">
-          <h3>學歷</h3>
-          <div>
-            <div class="row">
-              <div class="col">
-                <div class="title">亞洲大學</div>
-                <div class="muted">在學中 · 四年級</div>
-              </div>
-              <div class="col" style="text-align:right">
-                <div class="muted">入學年份：2023</div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="section">
-          <h3>實作 / 經歷</h3>
-          <ul>
-            <li>2021 - 私立佛教慈濟大學 華語志工團 清澫慈濟學校實習教師</li>
-            <li>2022 - 慈濟大學東方語系學會 組員</li>
-          </ul>
-        </section>
-
-        <section class="section">
-          <h3>工作經驗</h3>
-          <p class="muted">2017-2018 擔任家長會袐書</p>
-          <p class="muted">2023-至今 亞洲大學進階服學生</p>
-        </section>
-
-        <section class="section">
-          <h3>職涯目標</h3>
-          <p class="muted">短期：接案及私人委託 長期：加入Vtuber公司做為幕後人員，遊戲美術或是2D插畫相關職業</p>
-        </section>
-
-        <div style="display:flex;gap:12px;margin-top:12px;align-items:center">
-          <button class="btn-primary" id="downloadHtml">下載 HTML 檔</button>
-          <button class="btn-ghost" id="copyId">複製學號</button>
-        </div>
-
-      </main>
-    </div>
-
-    <footer>
-      個人履歷僅供課程使用。
-    </footer>
+    <button onclick="showId()">顯示我的學號</button>
   </div>
 
+  <footer>
+    © 2025 王小明 — 個人履歷製作練習
+  </footer>
+
   <script>
-    // Print
-    document.getElementById('printBtn').addEventListener('click',()=>window.print());
-
-    // Theme toggle (簡單深色模式)
-    const toggle = document.getElementById('toggleTheme');
-    toggle.addEventListener('click',()=>{
-      document.documentElement.style.setProperty('--bg', getComputedStyle(document.documentElement).getPropertyValue('--bg').includes('#0')? '#f6f8fb' : '#0b1220');
-      document.documentElement.style.setProperty('--card', getComputedStyle(document.documentElement).getPropertyValue('--card').includes('#f')? '#071129' : '#ffffff');
-      document.documentElement.style.setProperty('--muted', getComputedStyle(document.documentElement).getPropertyValue('--muted').includes('#6')? '#9aa4b2' : '#6b7280');
-      document.documentElement.style.setProperty('--accent', getComputedStyle(document.documentElement).getPropertyValue('--accent').includes('#3')? '#60a5fa' : '#3b82f6');
-      document.body.style.color = document.body.style.color === '#fff' ? '#111' : '#fff';
-    });
-
-    // Download HTML file
-    document.getElementById('downloadHtml').addEventListener('click',()=>{
-      const blob = new Blob([document.documentElement.outerHTML], {type: 'text/html'});
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url; a.download = 'resume_114001001.html';
-      document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
-    });
-
-    // Copy student id
-    document.getElementById('copyId').addEventListener('click',()=>{
-      navigator.clipboard && navigator.clipboard.writeText('114001001');
-      alert('學號 114001001 已複製到剪貼簿');
-    });
+    function showId() {
+      const id = document.getElementById("studentId").textContent;
+      alert("我的學號是：" + id);
+    }
   </script>
-
-
-<deepl-input-controller translate="no"></deepl-input-controller></body></html>
-
-
-
-
-
-
+</body>
+</html>
