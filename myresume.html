@@ -5,7 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>我的履歷 - 111051095</title>
   <style>
-    /* === 基本設定 === */
+    /* ==== 主題顏色設定 ==== */
+    :root {
+      --bg-color: #f4f6f8;
+      --text-color: #333;
+      --card-bg: #fff;
+      --accent: #3498db;
+      --shadow: rgba(0,0,0,0.1);
+      --border-light: rgba(0,0,0,0.1);
+    }
+
+    body.dark {
+      --bg-color: #1e1e2f;
+      --text-color: #f5f5f5;
+      --card-bg: #2a2a3d;
+      --accent: #9b59b6;
+      --shadow: rgba(255,255,255,0.08);
+      --border-light: rgba(255,255,255,0.1);
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -14,19 +32,22 @@
 
     body {
       font-family: "Microsoft JhengHei", sans-serif;
-      background: linear-gradient(135deg, #d0e6f6, #f8f9fb);
-      color: #333;
-      min-height: 100vh;
+      background: var(--bg-color);
+      color: var(--text-color);
+      transition: all 0.4s ease;
     }
 
+    /* ==== 版面配置 ==== */
     .container {
-      max-width: 900px;
-      margin: 60px auto;
-      background: #fff;
+      max-width: 1000px;
+      margin: 50px auto;
+      display: flex;
+      flex-wrap: wrap;
       border-radius: 16px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
       overflow: hidden;
-      animation: fadeIn 1.5s ease;
+      box-shadow: 0 10px 25px var(--shadow);
+      animation: fadeIn 1.2s ease;
+      background: var(--card-bg);
     }
 
     @keyframes fadeIn {
@@ -34,45 +55,69 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* === 頭部區塊 === */
-    .header {
-      background: linear-gradient(120deg, #3498db, #8e44ad);
+    /* ==== 左側區塊 ==== */
+    .left {
+      background: linear-gradient(135deg, #3498db, #8e44ad);
       color: white;
+      flex: 1 1 35%;
+      padding: 40px 20px;
       text-align: center;
-      padding: 50px 20px;
     }
 
-    .header h1 {
-      font-size: 36px;
-      letter-spacing: 1px;
+    .photo {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      margin: 0 auto 20px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
     }
 
-    .header p {
-      font-size: 18px;
-      margin-top: 10px;
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .photo img:hover {
+      transform: scale(1.08);
+    }
+
+    .name {
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .student-id {
+      font-size: 16px;
       opacity: 0.9;
+      margin: 6px 0 15px;
     }
 
-    /* === 內容區 === */
-    .section {
-      padding: 30px 50px;
-      border-bottom: 1px solid #eee;
+    .info {
+      text-align: left;
+      margin: 0 auto;
+      max-width: 220px;
     }
 
-    .section:last-child {
-      border-bottom: none;
+    .info p {
+      font-size: 15px;
+      margin: 8px 0;
+    }
+
+    /* ==== 右側區塊 ==== */
+    .right {
+      flex: 1 1 65%;
+      padding: 40px 50px;
     }
 
     h2 {
-      color: #2c3e50;
-      border-left: 5px solid #3498db;
+      color: var(--accent);
+      border-left: 5px solid var(--accent);
       padding-left: 10px;
-      margin-bottom: 20px;
-    }
-
-    p, li {
-      font-size: 16px;
-      line-height: 1.8;
+      margin: 25px 0 15px;
     }
 
     ul {
@@ -82,18 +127,23 @@
 
     ul li::before {
       content: "•";
-      color: #3498db;
+      color: var(--accent);
       margin-right: 8px;
     }
 
-    /* === 學號按鈕 === */
+    ul li, p {
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* ==== 按鈕與底部 ==== */
     .show-id-btn {
       display: block;
       margin: 30px auto;
-      background: linear-gradient(120deg, #3498db, #9b59b6);
+      background: var(--accent);
       color: white;
       border: none;
-      padding: 12px 25px;
+      padding: 10px 25px;
       border-radius: 8px;
       font-size: 16px;
       cursor: pointer;
@@ -102,70 +152,113 @@
 
     .show-id-btn:hover {
       transform: scale(1.05);
-      background: linear-gradient(120deg, #2980b9, #8e44ad);
+      background: #2980b9;
     }
 
-    /* === 底部 === */
     footer {
+      width: 100%;
       text-align: center;
-      padding: 20px;
       font-size: 14px;
       color: #777;
-      background: #f5f7fa;
+      border-top: 1px solid var(--border-light);
+      padding: 15px 0;
+      background: var(--card-bg);
+    }
+
+    /* 主題切換按鈕 */
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      box-shadow: 0 4px 10px var(--shadow);
+    }
+
+    .theme-toggle:hover {
+      background: #2980b9;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+      .left, .right {
+        flex: 1 1 100%;
+      }
+      .right {
+        padding: 30px 25px;
+      }
     }
   </style>
 </head>
 <body>
+  <button class="theme-toggle" onclick="toggleTheme()">切換主題 🌙</button>
+
   <div class="container">
-    <div class="header">
-      <h1>王小明</h1>
-      <p>學號：<span id="studentId">111051095</span></p>
-      <p>網頁前端設計 | UI/UX | 程式開發</p>
+    <!-- 左邊個人資料 -->
+    <div class="left">
+      <div class="photo">
+        <img src="https://i.imgur.com/4AiXzf8.jpeg" alt="個人照片">
+      </div>
+      <div class="name">王小明</div>
+      <div class="student-id">學號：<span id="studentId">111051095</span></div>
+      <div class="info">
+        <p><strong>Email：</strong> example@mail.com</p>
+        <p><strong>電話：</strong> 0912-345-678</p>
+        <p><strong>居住地：</strong> 台中市</p>
+      </div>
     </div>
 
-    <div class="section">
-      <h2>基本資料</h2>
-      <p><strong>Email：</strong> example@mail.com</p>
-      <p><strong>電話：</strong> 0912-345-678</p>
-      <p><strong>居住地：</strong> 台中市</p>
-    </div>
-
-    <div class="section">
+    <!-- 右邊內容 -->
+    <div class="right">
       <h2>學歷</h2>
       <ul>
         <li>國立XX大學 資訊工程學系（2021 - 至今）</li>
         <li>XX高中（2018 - 2021）</li>
       </ul>
-    </div>
 
-    <div class="section">
       <h2>技能</h2>
       <ul>
-        <li>HTML / CSS / JavaScript 網頁設計</li>
-        <li>Python / C++ 程式開發</li>
-        <li>UI/UX 視覺設計基礎</li>
-        <li>Git / Figma / VS Code 操作</li>
+        <li>HTML / CSS / JavaScript 網頁開發</li>
+        <li>Python / C++ 程式設計</li>
+        <li>UI/UX 設計與排版</li>
+        <li>Git / Figma / VS Code 工具運用</li>
       </ul>
-    </div>
 
-    <div class="section">
       <h2>經歷</h2>
       <ul>
         <li>2023 - 校園專題製作：互動式作品展示網站開發</li>
         <li>2022 - 系學會活動組志工</li>
-        <li>2021 - 前端設計社團 成員</li>
+        <li>2021 - 前端設計社團成員</li>
       </ul>
+
+      <button class="show-id-btn" onclick="showStudentId()">顯示學號</button>
     </div>
-
-    <button class="show-id-btn" onclick="showStudentId()">顯示學號</button>
-
-    <footer>© 2025 王小明 | 履歷設計練習</footer>
   </div>
+
+  <footer>© 2025 王小明 | 履歷設計練習</footer>
 
   <script>
     function showStudentId() {
       const id = document.getElementById("studentId").textContent;
       alert("我的學號是：" + id);
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle('dark');
+      const btn = document.querySelector('.theme-toggle');
+      if (document.body.classList.contains('dark')) {
+        btn.textContent = "切換主題 ☀️";
+      } else {
+        btn.textContent = "切換主題 🌙";
+      }
     }
   </script>
 </body>
