@@ -200,7 +200,8 @@
 </head>
 <body>
   <button class="theme-toggle" onclick="toggleTheme()">切換主題 🌙</button>
-
+  <button class="pdf-btn" onclick="downloadPDF()">下載 PDF 📄</button>
+  
   <div class="container">
     <!-- 左邊個人資料 -->
     <div class="left">
@@ -281,8 +282,21 @@
         btn.textContent = "切換主題 🌙";
       }
     }
+    
+    async function downloadPDF() {
+      const { jsPDF } = window.jspdf;
+      const resume = document.getElementById("resume");
+      const canvas = await html2canvas(resume, { scale: 2 });
+      const imgData = canvas.toDataURL("image/png");
+      const pdf = new jsPDF("p", "mm", "a4");
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+      pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+      pdf.save("resume_111051095.pdf");
+    }
   </script>
 </body>
 </html>
+
 
 
